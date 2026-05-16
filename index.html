@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Event Registration Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes logoPulse {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg) scale(1);
+                filter: drop-shadow(0 0 0 rgba(37, 99, 235, 0));
+            }
+            50% {
+                transform: translateY(-2px) rotate(-4deg) scale(1.06);
+                filter: drop-shadow(0 8px 14px rgba(37, 99, 235, 0.28));
+            }
+        }
+
+        .logo-animate {
+            animation: logoPulse 2.8s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-neutral-100 text-neutral-950">
+    <nav class="sticky top-0 z-50 bg-neutral-950/95 shadow-lg border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-wrap justify-between items-center gap-4 py-4">
+                <div class="flex items-center gap-3">
+                    <img src="img/event.png" alt="EventHub logo" class="logo-animate h-10 w-10 object-contain">
+                    <h1 class="text-2xl font-bold text-white">EventHub</h1>
+                </div>
+                <div class="flex flex-wrap items-center gap-3 text-sm font-semibold">
+                    <a href="#events" class="text-neutral-200 hover:text-white">Events</a>
+                    <a href="#past-events" class="text-neutral-200 hover:text-white">Past Events</a>
+                    <a href="#faqs" class="text-neutral-200 hover:text-white">FAQs</a>
+                    <a href="#about" class="text-neutral-200 hover:text-white">About Us</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="relative bg-neutral-950 py-16 md:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="relative overflow-hidden rounded-lg bg-cover bg-center" style="background-image: linear-gradient(rgba(10, 10, 10, 0.72), rgba(10, 10, 10, 0.72)), url('img/banner.jpg');">
+            <div class="max-w-3xl mx-auto py-24">
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Welcome to EventHub</h2>
+                <p class="text-lg md:text-xl text-neutral-100 max-w-2xl mx-auto">
+                    Discover and register for amazing school events. Manage your event registrations all in one place.
+                </p>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            <div class="bg-white rounded-lg shadow-md p-6 border-l-4 border-blue-600">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-neutral-600 text-sm font-semibold">Total Events</p>
+                        <p id="totalEvents" class="text-4xl font-bold text-neutral-950 mt-2">0</p>
+                    </div>
+                    <svg class="w-12 h-12 text-blue-600 opacity-20" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M2 4a1 1 0 011-1h6a1 1 0 011 1v12a1 1 0 11-2 0V5H3a1 1 0 01-1-1zm8-1h6a1 1 0 011 1v12a1 1 0 11-2 0V4h-5a1 1 0 110-2z"></path>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md p-6 border-l-4 border-red-500">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-neutral-600 text-sm font-semibold">Total Registrations</p>
+                        <p id="totalRegistrations" class="text-4xl font-bold text-neutral-950 mt-2">0</p>
+                    </div>
+                    <svg class="w-12 h-12 text-red-500 opacity-20" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM9 10a1 1 0 00-1 1v5H1v-5a1 1 0 00-1-1h8zM9 0h6a1 1 0 011 1v16a1 1 0 01-1 1H9a1 1 0 01-1-1V1a1 1 0 011-1z"></path>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md p-6 border-l-4 border-neutral-950">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-neutral-600 text-sm font-semibold">Available Seats</p>
+                        <p id="availableSeats" class="text-4xl font-bold text-neutral-950 mt-2">0</p>
+                    </div>
+                    <svg class="w-12 h-12 text-neutral-950 opacity-20" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v4h8v-4zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"></path>
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <div id="events" class="grid grid-cols-1 lg:grid-cols-3 gap-8 scroll-mt-24">
+            <section class="lg:col-span-2">
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+                <h3 class="text-2xl font-bold text-neutral-950">Available Events</h3>
+                    <input 
+                        type="text" 
+                        id="searchInput" 
+                        placeholder="Search events..." 
+                        class="w-full sm:w-72 px-4 py-2 rounded-lg border border-neutral-300 bg-white text-neutral-950 placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    >
+                </div>
+                <div id="eventsContainer" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
+            </section>
+
+            <section class="bg-white rounded-lg shadow-lg p-6 h-fit lg:sticky lg:top-24">
+                <h3 class="text-2xl font-bold text-neutral-950 mb-6">Add New Event</h3>
+                <form id="addEventForm" class="space-y-4">
+                    <div>
+                        <label for="eventTitle" class="block text-sm font-medium text-neutral-700 mb-1">Event Title</label>
+                        <input type="text" id="eventTitle" placeholder="" class="w-full px-4 py-2 border border-neutral-300 rounded-lg text-neutral-950 placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                    </div>
+
+                    <div>
+                        <label for="eventCategory" class="block text-sm font-medium text-neutral-700 mb-1">Category</label>
+                        <select id="eventCategory" class="w-full px-4 py-2 border border-neutral-300 rounded-lg text-neutral-950 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                            <option value="">Select a category</option>
+                            <option value="Technology">Technology</option>
+                            <option value="Sports">Sports</option>
+                            <option value="Arts">Arts</option>
+                            <option value="Science">Science</option>
+                            <option value="Business">Business</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="eventDate" class="block text-sm font-medium text-neutral-700 mb-1">Event Date</label>
+                        <input type="date" id="eventDate" class="w-full px-4 py-2 border border-neutral-300 rounded-lg text-neutral-950 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                    </div>
+
+                    <div>
+                        <label for="eventLocation" class="block text-sm font-medium text-neutral-700 mb-1">Location</label>
+                        <input type="text" id="eventLocation" placeholder="e.g., Main Hall" class="w-full px-4 py-2 border border-neutral-300 rounded-lg text-neutral-950 placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                    </div>
+
+                    <div>
+                        <label for="eventSeats" class="block text-sm font-medium text-neutral-700 mb-1">Total Seats</label>
+                        <input type="number" id="eventSeats" placeholder="" min="1" class="w-full px-4 py-2 border border-neutral-300 rounded-lg text-neutral-950 placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                    </div>
+
+                    <div id="formMessage" class="hidden p-3 rounded-lg text-sm font-medium"></div>
+
+                    <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition duration-200">Add Event</button>
+                </form>
+            </section>
+        </div>
+
+        <section id="past-events" class="scroll-mt-24 mt-16">
+            <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-6">
+                <div>
+                    <h3 class="text-2xl font-bold text-neutral-950">Past Events</h3>
+                    <p class="text-neutral-600 mt-2">A few recent moments from our school community.</p>
+                </div>
+                <p class="text-sm font-semibold text-blue-700">Previous event highlight</p>
+            </div>
+            <div class="grid grid-cols-1 gap-6">
+                <article class="grid grid-cols-1 md:grid-cols-5 overflow-hidden rounded-lg bg-white shadow-md">
+                    <div class="md:col-span-2 min-h-56 bg-cover bg-center" style="background-image: url('img/hackton.jpg');"></div>
+                    <div class="md:col-span-3 p-6 md:p-8">
+                        <p class="text-sm font-semibold text-blue-700">March 2026</p>
+                        <h4 class="text-2xl font-bold text-neutral-950 mt-2">Coding Challenge Day</h4>
+                        <p class="text-neutral-700 mt-3">Students worked in teams, solved real problems, and presented their ideas with confidence. The event showed how creative learners can become when they are trusted with practical challenges.</p>
+                        <p class="mt-4 text-sm font-semibold text-neutral-600">Student testimony: “I learned how to explain my idea clearly and build something useful with my team.”</p>
+                    </div>
+                </article>
+                <article class="grid grid-cols-1 md:grid-cols-5 overflow-hidden rounded-lg bg-white shadow-md">
+                    <div class="md:col-span-3 p-6 md:p-8 md:order-1 order-2">
+                        <p class="text-sm font-semibold text-blue-700">February 2026</p>
+                        <h4 class="text-2xl font-bold text-neutral-950 mt-2">Science Fair</h4>
+                        <p class="text-neutral-700 mt-3">The fair brought creative experiments, strong teamwork, and thoughtful student presentations. Visitors moved from table to table, seeing science become something students could touch and explain.</p>
+                        <p class="mt-4 text-sm font-semibold text-neutral-600">Teacher note: “The best part was watching quiet students become confident presenters.”</p>
+                    </div>
+                    <div class="md:col-span-2 min-h-56 bg-neutral-900 md:order-2 order-1 flex items-center justify-center p-8">
+                        <div class="text-center">
+                            <p class="text-5xl font-bold text-white">96%</p>
+                            <p class="mt-2 text-neutral-200 font-semibold">positive feedback</p>
+                        </div>
+                    </div>
+                </article>
+                <article class="grid grid-cols-1 md:grid-cols-5 overflow-hidden rounded-lg bg-white shadow-md">
+                    <div class="md:col-span-2 min-h-56 flex items-center justify-center p-8">
+                        <img src="img/art.jpg" alt="Event icon" class="h-auto w-100% object-contain">
+                    </div>
+                    <div class="md:col-span-3 p-6 md:p-8">
+                        <p class="text-sm font-semibold text-blue-700">January 2026</p>
+                        <h4 class="text-2xl font-bold text-neutral-950 mt-2">Arts Showcase</h4>
+                        <p class="text-neutral-700 mt-3">Learners shared digital art, music, and design work in a welcoming evening event. The showcase made space for talent, courage, and a little healthy applause.</p>
+                        <p class="mt-4 text-sm font-semibold text-neutral-600">Parent testimony: "It felt professional, warm, and easy to follow from start to finish."</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="faqs" class="scroll-mt-24 mt-16">
+            <h3 class="text-2xl font-bold text-neutral-950 mb-6">FAQs</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h4 class="font-bold text-neutral-950">How do I register?</h4>
+                    <p class="text-neutral-700 mt-2">Choose an available event and click Register. The seat count updates automatically.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h4 class="font-bold text-neutral-950">Can I cancel my registration?</h4>
+                    <p class="text-neutral-700 mt-2">Yes. Use the Cancel button on the event card to free up one seat.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h4 class="font-bold text-neutral-950">What happens when an event is full?</h4>
+                    <p class="text-neutral-700 mt-2">The Register button becomes disabled when there are no seats left.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h4 class="font-bold text-neutral-950">Who can add events?</h4>
+                    <p class="text-neutral-700 mt-2">Use the Add New Event form to add school activities with a title, category, date, and seats.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="scroll-mt-24 mt-16">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+                <div class="lg:col-span-7 bg-white rounded-lg shadow-md p-6 md:p-10">
+                    <p class="text-sm font-bold uppercase text-blue-700">About Us</p>
+                    <h3 class="mt-3 text-3xl md:text-4xl font-bold text-neutral-950">A simple place for students to find what is happening next.</h3>
+                    <p class="text-neutral-700 mt-5 leading-relaxed">
+                        EventHub is a student event registration dashboard designed for school life. It helps learners discover upcoming activities, check dates and locations, register for seats, and see when an event is already full.
+                    </p>
+                    <p class="text-neutral-700 mt-4 leading-relaxed">
+                        The platform keeps the experience clear for everyone: students can browse quickly, organizers can add new events without confusion, and teachers can see registration numbers at a glance. The design is responsive, so the same information works well on phones, tablets, and desktop screens.
+                    </p>
+                </div>
+                <div class="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-6">
+                    <div class="bg-neutral-950 rounded-lg shadow-md p-6">
+                        <p class="text-4xl font-bold text-white">3</p>
+                        <p class="mt-2 text-neutral-200 font-semibold">core actions: discover, register, manage</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h4 class="text-xl font-bold text-neutral-950">Why it matters</h4>
+                        <p class="text-neutral-700 mt-3">Good event planning helps students show up prepared, feel included, and join activities that match their interests.</p>
+                    </div>
+                </div>
+                <div class="lg:col-span-12 bg-white rounded-lg shadow-md p-6 md:p-8">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div>
+                            <h4 class="font-bold text-neutral-950">For students</h4>
+                            <p class="text-neutral-700 mt-2">Search events, view dates, check locations, and register before seats run out.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-neutral-950">For organizers</h4>
+                            <p class="text-neutral-700 mt-2">Add event details, track registrations, and keep information consistent.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-neutral-950">For the school</h4>
+                            <p class="text-neutral-700 mt-2">Create a cleaner event calendar that encourages participation and reduces confusion.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="mt-16 bg-neutral-950 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <div class="flex items-center gap-3">
+                        <img src="img/event.png" alt="EventHub logo" class="logo-animate h-10 w-10 object-contain">
+                        <p class="text-xl font-bold">EventHub</p>
+                    </div>
+                    <p class="mt-3 text-neutral-300 max-w-sm">
+                        A student event registration dashboard for discovering events, checking dates and locations, and managing seats.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-bold">Quick Links</h4>
+                    <div class="mt-3 grid gap-2 text-sm">
+                        <a href="#events" class="text-neutral-300 hover:text-white">Events</a>
+                        <a href="#past-events" class="text-neutral-300 hover:text-white">Past Events</a>
+                        <a href="#faqs" class="text-neutral-300 hover:text-white">FAQs</a>
+                        <a href="#about" class="text-neutral-300 hover:text-white">About Us</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold">Project Info</h4>
+                    <p class="mt-3 text-neutral-300 text-sm">
+                        Built with HTML, Tailwind CSS, and JavaScript. Event data is saved in the browser using localStorage.
+                    </p>
+                </div>
+            </div>
+            <div class="mt-8 border-t border-white/10 pt-5 text-sm text-neutral-400 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                <p>&copy; 2026 EventHub. All rights reserved.</p>
+                <p>Designed for school event management.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
