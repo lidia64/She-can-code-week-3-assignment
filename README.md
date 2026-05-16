@@ -17,7 +17,7 @@ EventHub is a responsive student event registration dashboard. Students can brow
 ## visibility
 
 Add your website screenshot to the `img` folder, then update the image name below if needed.
-![EventHub website screenshot](img/event.png)
+![EventHub website screenshot](img/view.png)
 
 . Project Structure
 
