@@ -29,7 +29,7 @@ weekly assign ment/
 └── img/
     ├── banner.jpg
     ├── event.png
-    └── screenshot.png
+    
 ```
 
 ## How To Run
