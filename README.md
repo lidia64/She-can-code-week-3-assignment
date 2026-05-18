@@ -1,5 +1,5 @@
 # EventHub
-
+https://studentevent.netlify.app/
 EventHub is a responsive student event registration dashboard. Students can browse events, search by title, category, or location, view dates and available seats, and register or cancel registrations.
 
  Features
